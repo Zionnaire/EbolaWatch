@@ -1,0 +1,176 @@
+import { z } from 'zod';
+
+/** analyst < senior_analyst < supervisor < org_admin are tenant roles. super_admin is the platform operator (no org). */
+export const RoleSchema = z.enum(['analyst', 'senior_analyst', 'supervisor', 'org_admin', 'super_admin']);
+export type Role = z.infer<typeof RoleSchema>;
+export const TENANT_ROLES = ['analyst', 'senior_analyst', 'supervisor', 'org_admin'] as const;
+
+/** The roles an org admin may hand out by invitation. Admins are only ever created through the claim link. */
+export const INVITABLE_ROLES = ['analyst', 'senior_analyst', 'supervisor'] as const;
+
+export const OrgTypeSchema = z.enum(['national', 'state', 'partner']);
+export type OrgType = z.infer<typeof OrgTypeSchema>;
+
+export const OrgStatusSchema = z.enum(['active', 'suspended', 'trial']);
+export type OrgStatus = z.infer<typeof OrgStatusSchema>;
+
+export const PasswordSchema = z
+  .string()
+  .min(10, 'Use at least 10 characters')
+  .max(128, 'Use at most 128 characters')
+  .refine((p) => p.trim().length > 0, 'The password must not be blank');
+export const EmailSchema = z.string().trim().toLowerCase().pipe(z.email().max(254));
+
+/**
+ * Organization settings. Unset fields inherit the platform default. `.strict()` so a client can only ever send
+ * the fields listed here (no mass assignment).
+ */
+export const OrgSettingsSchema = z
+  .object({
+    overdueHours: z.number().min(1).max(720).nullable().optional(),
+    queueCap: z.number().int().min(1).max(100_000).nullable().optional(),
+    /** Wording overrides (e.g. what this organization calls a "review"). */
+    vocabulary: z
+      .record(z.string().min(1).max(40), z.string().max(100))
+      .refine((v) => Object.keys(v).length <= 50, 'At most 50 vocabulary entries')
+      .nullable()
+      .optional(),
+  })
+  .strict();
+export type OrgSettingsPatch = z.infer<typeof OrgSettingsSchema>;
+
+export const EffectiveSettingsSchema = z.object({
+  overdueHours: z.number(),
+  queueCap: z.number().int(),
+  vocabulary: z.record(z.string(), z.string()),
+});
+export type EffectiveSettings = z.infer<typeof EffectiveSettingsSchema>;
+
+export const OrganizationDtoSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  slug: z.string(),
+  type: OrgTypeSchema,
+  region: z.string().nullable(),
+  status: OrgStatusSchema,
+  /** Empty means all states. Otherwise this organization only sees global posts from these states. */
+  scopeStates: z.array(z.string()),
+  /** What was set explicitly on this organization. */
+  settings: z.object({
+    overdueHours: z.number().optional(),
+    queueCap: z.number().optional(),
+    vocabulary: z.record(z.string(), z.string()).optional(),
+  }),
+  /** The values in force: explicit settings, else the platform defaults. */
+  effectiveSettings: EffectiveSettingsSchema,
+  adminClaimed: z.boolean(),
+  /** Computed live when listed (never a stored counter, which would drift). */
+  userCount: z.number().int().optional(),
+  createdAt: z.string(),
+});
+export type OrganizationDto = z.infer<typeof OrganizationDtoSchema>;
+
+export const UserDtoSchema = z.object({
+  id: z.string(),
+  email: z.string(),
+  name: z.string(),
+  role: RoleSchema,
+  organizationId: z.string().nullable(),
+  isActive: z.boolean(),
+  lastLoginAt: z.string().nullable(),
+  createdAt: z.string(),
+});
+export type UserDto = z.infer<typeof UserDtoSchema>;
+
+export const MeDtoSchema = z.object({
+  user: UserDtoSchema,
+  organization: OrganizationDtoSchema.nullable(),
+  /** What this user may do; the UI uses it to show or hide actions (the server enforces it regardless). */
+  permissions: z.array(z.string()),
+});
+export type MeDto = z.infer<typeof MeDtoSchema>;
+
+// ---- requests ----
+export const LoginRequestSchema = z.object({ email: EmailSchema, password: z.string().min(1).max(128) });
+
+export const CreateOrganizationRequestSchema = z.object({
+  name: z.string().trim().min(2).max(100),
+  type: OrgTypeSchema,
+  region: z.string().trim().max(80).optional(),
+  scopeStates: z.array(z.string().trim().min(1)).max(37).optional(),
+  /** Lowercase letters, digits and hyphens. Derived from the name when omitted. */
+  slug: z
+    .string()
+    .trim()
+    .toLowerCase()
+    .regex(/^[a-z0-9](?:[a-z0-9-]{0,48}[a-z0-9])?$/, 'Use lowercase letters, digits and hyphens')
+    .optional(),
+});
+
+export const OneTimeLinkSchema = z.object({
+  /** Shown once. Only a hash is stored. */
+  token: z.string(),
+  url: z.string(),
+  expiresAt: z.string(),
+});
+export const CreateOrganizationResponseSchema = z.object({
+  organization: OrganizationDtoSchema,
+  claimLink: OneTimeLinkSchema,
+});
+
+export const ClaimInfoDtoSchema = z.object({
+  organization: z.object({ name: z.string(), slug: z.string(), type: OrgTypeSchema }),
+  expiresAt: z.string(),
+});
+export const ClaimRequestSchema = z.object({
+  name: z.string().trim().min(2).max(100),
+  email: EmailSchema,
+  password: PasswordSchema,
+});
+
+export const InviteRequestSchema = z.object({ email: EmailSchema, role: z.enum(INVITABLE_ROLES) });
+export const InviteDtoSchema = z.object({
+  id: z.string(),
+  email: z.string(),
+  role: z.enum(INVITABLE_ROLES),
+  expiresAt: z.string(),
+  usedAt: z.string().nullable(),
+  createdAt: z.string(),
+});
+export const InviteResponseSchema = z.object({ invite: InviteDtoSchema, link: OneTimeLinkSchema });
+export const InviteInfoDtoSchema = z.object({
+  organization: z.object({ name: z.string() }),
+  email: z.string(),
+  role: z.enum(INVITABLE_ROLES),
+  expiresAt: z.string(),
+});
+export const AcceptInviteRequestSchema = z.object({
+  name: z.string().trim().min(2).max(100),
+  password: PasswordSchema,
+});
+
+export const UpdateUserRequestSchema = z
+  .object({ role: z.enum(INVITABLE_ROLES).optional(), isActive: z.boolean().optional() })
+  .strict()
+  .refine((v) => v.role !== undefined || v.isActive !== undefined, 'Nothing to change');
+
+export const ChangePasswordRequestSchema = z.object({
+  currentPassword: z.string().min(1).max(128),
+  newPassword: PasswordSchema,
+});
+export const SetOrgStatusRequestSchema = z.object({ status: OrgStatusSchema });
+
+export const OrgOverviewDtoSchema = z.object({
+  organizations: z.array(
+    z.object({
+      organization: OrganizationDtoSchema,
+      users: z.number().int(),
+      activeUsers: z.number().int(),
+      reviews: z.number().int(),
+      narratives: z.number().int(),
+      dispatches: z.number().int(),
+    }),
+  ),
+  totals: z.object({ organizations: z.number().int(), users: z.number().int(), reviews: z.number().int() }),
+});
+export type OrgOverviewDto = z.infer<typeof OrgOverviewDtoSchema>;

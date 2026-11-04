@@ -1,0 +1,51 @@
+{
+  "name": "ebolawatch-backend",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20.19"
+  },
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "mock-model": "tsx src/mock-model/index.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "test": "vitest run",
+    "contracts:schema": "tsx scripts/export-schema.ts",
+    "check:env": "tsx scripts/check-env.ts",
+    "admin:create-super": "tsx scripts/create-super-admin.ts",
+    "migrate:tenancy": "tsx scripts/migrate-tenancy.ts",
+    "dev:demo": "tsx scripts/dev-demo.ts",
+    "check:groq": "tsx scripts/check-groq.ts"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.9",
+    "express": "^5.3.0",
+    "express-rate-limit": "^8.7.1",
+    "helmet": "^8.3.0",
+    "mongoose": "^9.11.4",
+    "pino": "^10.4.0",
+    "socket.io": "^4.8.4",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.6.5",
+    "@types/supertest": "^7.2.1",
+    "eslint": "^10.13.0",
+    "mongodb-memory-server": "^11.3.0",
+    "msw": "^2.15.0",
+    "prettier": "^3.9.10",
+    "supertest": "^7.3.1",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.72.1",
+    "vitest": "^5.0.5"
+  }
+}

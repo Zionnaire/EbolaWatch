@@ -1,0 +1,355 @@
+{
+  "version": "ebola-facts-1.0",
+  "retrievedAt": "2026-10-28",
+  "status": "pending_ncdc_review",
+  "note": "Facts are condensed and reworded from the cited pages, one claim per entry, so a counter-narrative can cite exactly what supports it. Nothing here is medical advice of our own. An NCDC reviewer must approve this file before it is used for live responses. Entries marked volatile change with the outbreak and must be re-checked before each use.",
+  "sources": {
+    "who-factsheet": {
+      "publisher": "World Health Organization",
+      "title": "Ebola disease (fact sheet)",
+      "url": "https://www.who.int/news-room/fact-sheets/detail/ebola-disease",
+      "publishedAt": "2025-04-24",
+      "verifiedAgainst": "Full page text supplied by the project owner on 2026-10-28 (dated 24 April 2025)."
+    },
+    "who-topic": {
+      "publisher": "World Health Organization",
+      "title": "Ebola (health topic overview)",
+      "url": "https://www.who.int/health-topics/ebola",
+      "publishedAt": null
+    },
+    "who-afro-drc-2026": {
+      "publisher": "WHO Regional Office for Africa",
+      "title": "Democratic Republic of the Congo confirms new Ebola outbreak, WHO scales up support",
+      "url": "https://www.afro.who.int/countries/democratic-republic-congo/news/democratic-republic-congo-confirms-new-ebola-outbreak-who",
+      "publishedAt": "2026-05-15"
+    },
+    "ncdc-advisory-2025": {
+      "publisher": "Nigeria Centre for Disease Control and Prevention (NCDC)",
+      "title": "NCDC public health advisory following the suspected viral haemorrhagic fever events in Abuja: what Nigerians should know",
+      "url": "https://ncdc.gov.ng/news/531/ncdc-public-health-advisory-following-the-suspected-viral-haemorrhagic-fever-events-in-abuja%3A-what-nigerians-should-know",
+      "publishedAt": "2025-09-19"
+    },
+    "von-preparedness-2026": {
+      "publisher": "Voice of Nigeria",
+      "title": "Nigeria strengthens Ebola preparedness after Kenya case",
+      "url": "https://von.gov.ng/nigeria-strengthens-ebola-preparedness-after-kenya-case/",
+      "publishedAt": "2026-10-07"
+    },
+    "africacdc-evd": {
+      "publisher": "Africa CDC",
+      "title": "Ebola virus disease",
+      "url": "https://africacdc.org/disease/ebola-virus-disease/",
+      "publishedAt": null
+    },
+    "who-ervebo-bdbv-2026": {
+      "publisher": "World Health Organization",
+      "title": "WHO emergency guidance on the use of licensed Ebola vaccine during Bundibugyo virus disease outbreaks (interim guidance)",
+      "url": "https://doi.org/10.2471/B09884",
+      "publishedAt": "2026-08-31",
+      "validUntil": "2027-02-28",
+      "license": "CC BY-NC-SA 3.0 IGO",
+      "verifiedAgainst": "Full PDF supplied by the project owner on 2026-10-28. WHO states the guidance is no longer valid six months after publication unless updated."
+    }
+  },
+  "entries": [
+    {
+      "id": "what-is-ebola",
+      "topic": "overview",
+      "volatile": false,
+      "text": "Ebola disease is a rare but severe illness in people that is often fatal. The average case fatality rate is about 50%, and has ranged from 25% to 90% in past outbreaks.",
+      "source": "who-factsheet"
+    },
+    {
+      "id": "viruses-that-cause-outbreaks",
+      "topic": "overview",
+      "volatile": false,
+      "text": "Three viruses are known to cause large outbreaks: Ebola virus, Sudan virus and Bundibugyo virus.",
+      "source": "who-factsheet"
+    },
+    {
+      "id": "origin-animals",
+      "topic": "transmission",
+      "volatile": false,
+      "text": "Fruit bats are thought to be the natural hosts. The virus can reach people through close contact with the blood, fluids or organs of infected animals such as fruit bats, monkeys, apes, forest antelope or porcupines found ill or dead.",
+      "source": "who-factsheet"
+    },
+    {
+      "id": "person-to-person",
+      "topic": "transmission",
+      "volatile": false,
+      "text": "It spreads between people through direct contact, through broken skin or mucous membranes, with the blood or body fluids of a person who is sick with or has died from Ebola disease, or with objects and surfaces contaminated with those fluids (such as blood, faeces and vomit).",
+      "source": "who-factsheet"
+    },
+    {
+      "id": "not-contagious-before-symptoms",
+      "topic": "transmission",
+      "volatile": false,
+      "text": "People cannot spread Ebola before they have symptoms. They remain infectious as long as the virus is in their blood.",
+      "source": "who-factsheet"
+    },
+    {
+      "id": "contaminated-items",
+      "topic": "transmission",
+      "volatile": false,
+      "text": "Contaminated items such as bedding and clothing can also carry the virus from a sick person.",
+      "source": "africacdc-evd"
+    },
+    {
+      "id": "burials",
+      "topic": "transmission",
+      "volatile": false,
+      "text": "Burial ceremonies with direct contact with the body of someone who died of Ebola can spread the disease. Safe and dignified burials are part of outbreak control.",
+      "source": "who-factsheet"
+    },
+    {
+      "id": "health-workers-risk",
+      "topic": "transmission",
+      "volatile": false,
+      "text": "Health and care workers are often infected when infection-control precautions are not strictly followed, which is why protective equipment, hand hygiene and safe injection and burial practices matter.",
+      "source": "who-factsheet"
+    },
+    {
+      "id": "incubation",
+      "topic": "symptoms",
+      "volatile": false,
+      "text": "Symptoms appear 2 to 21 days after infection.",
+      "source": "who-factsheet"
+    },
+    {
+      "id": "early-symptoms",
+      "topic": "symptoms",
+      "volatile": false,
+      "text": "Illness can start suddenly with fever, fatigue, muscle pain, headache and sore throat, followed by vomiting, diarrhoea, rash and problems with kidney and liver function.",
+      "source": "who-factsheet"
+    },
+    {
+      "id": "bleeding-is-not-the-main-sign",
+      "topic": "symptoms",
+      "volatile": false,
+      "text": "Bleeding is less common than people often assume and tends to appear later in the illness.",
+      "source": "who-factsheet"
+    },
+    {
+      "id": "looks-like-other-illness",
+      "topic": "diagnosis",
+      "volatile": false,
+      "text": "Early Ebola symptoms look like those of malaria, typhoid fever, shigellosis, meningitis and other viral haemorrhagic fevers, so it is hard to tell them apart by symptoms alone. Only laboratory tests (such as RT-PCR) can confirm Ebola.",
+      "source": "who-factsheet"
+    },
+    {
+      "id": "no-proven-home-cure",
+      "topic": "treatment",
+      "volatile": false,
+      "text": "Early intensive supportive care, such as rehydration and treatment of specific symptoms, improves survival, and seeking care early can be lifesaving. Licensed treatments exist only for Ebola virus disease.",
+      "source": "who-factsheet"
+    },
+    {
+      "id": "treatment-other-species",
+      "topic": "treatment",
+      "volatile": false,
+      "text": "For other Ebola diseases, such as Sudan virus disease and Bundibugyo virus disease, there are no approved treatments yet. Candidate products are under development.",
+      "source": "who-factsheet"
+    },
+    {
+      "id": "vaccines",
+      "topic": "vaccines",
+      "volatile": false,
+      "text": "Two vaccines are approved for Ebola virus disease: Ervebo, and Zabdeno with Mvabea. For other Ebola diseases, such as Sudan virus and Bundibugyo virus disease, candidate vaccines are still in development.",
+      "source": "who-factsheet"
+    },
+    {
+      "id": "prevention-community",
+      "topic": "prevention",
+      "volatile": false,
+      "text": "Outbreaks are controlled through clinical care, surveillance and contact tracing, laboratory services, infection prevention in health facilities, safe burials and community engagement. Contacts are monitored for 21 days.",
+      "source": "who-factsheet"
+    },
+    {
+      "id": "prevention-animals",
+      "topic": "prevention",
+      "volatile": false,
+      "text": "To lower the risk from animals, avoid contact with fruit bats, monkeys and apes, handle animals with gloves and protective clothing, and cook animal products thoroughly.",
+      "source": "ncdc-advisory-2025"
+    },
+    {
+      "id": "prevention-hands",
+      "topic": "prevention",
+      "volatile": false,
+      "text": "Wash hands with soap under running water or use an alcohol-based sanitiser, and avoid contact with the blood or body fluids of anyone with symptoms.",
+      "source": "ncdc-advisory-2025"
+    },
+    {
+      "id": "seek-care-early",
+      "topic": "what-to-do",
+      "volatile": false,
+      "text": "Anyone who feels unwell, especially after travel to an affected area, should seek care early. Travellers from affected areas should watch their health for 21 days and report symptoms or possible exposure.",
+      "source": "ncdc-advisory-2025"
+    },
+    {
+      "id": "rely-on-official-sources",
+      "topic": "what-to-do",
+      "volatile": false,
+      "text": "NCDC asks people to rely only on official updates from NCDC and authorised government sources, and not to share unverified messages or rumours on social media.",
+      "source": "ncdc-advisory-2025"
+    },
+    {
+      "id": "survivors",
+      "topic": "survivors",
+      "volatile": false,
+      "text": "WHO does not recommend isolating recovered patients whose blood has tested negative for the virus. Male survivors are counselled on safer sex because the virus has been found in semen up to fifteen months after recovery; WHO advises safer sex for 12 months where there is no semen testing programme.",
+      "source": "who-factsheet"
+    },
+    {
+      "id": "nigeria-2014",
+      "topic": "nigeria",
+      "volatile": false,
+      "text": "Nigeria had 20 cases and 8 deaths in the 2014 outbreak. Nigeria's experience showed that early detection and rapid response stop onward spread.",
+      "source": "africacdc-evd",
+      "note": "Case figures from the Africa CDC table. The 'early detection and rapid response' sentence is NCDC's own statement, reported by Voice of Nigeria (von-preparedness-2026)."
+    },
+    {
+      "id": "ncdc-hotlines",
+      "topic": "contacts",
+      "volatile": true,
+      "text": "NCDC Connect Centre, available 24 hours, toll-free: 6232. SMS: 0809 955 5577. WhatsApp: 0708 711 0839. You can also call your State Ministry of Health hotline. NCDC is @NCDCgov on X, Facebook, Instagram and YouTube.",
+      "source": "ncdc-advisory-2025",
+      "note": "Numbers as published in September 2025. Verify with NCDC before every use; a wrong number in a public message does harm."
+    },
+    {
+      "id": "nigeria-status-2026-10",
+      "topic": "situation",
+      "volatile": true,
+      "asOf": "2026-10-06",
+      "text": "NCDC stated that there was no confirmed case of Ebola disease in Nigeria as of 6 October 2026. Kenya confirmed an imported case linked to the outbreak in the Democratic Republic of the Congo on 6 October 2026, and NCDC has stepped up readiness: surveillance, isolation and referral, laboratory diagnosis, contact tracing and a national preparedness simulation.",
+      "source": "von-preparedness-2026",
+      "note": "Never reuse after the as-of date without re-checking NCDC. This entry exists to answer 'is Ebola in Nigeria?' accurately on that date only."
+    },
+    {
+      "id": "drc-bundibugyo-2026",
+      "topic": "situation",
+      "volatile": true,
+      "asOf": "2026-05-15",
+      "text": "On 15 May 2026 WHO reported that laboratory tests confirmed an Ebola outbreak caused by Bundibugyo virus in Ituri Province, in the north-east of the Democratic Republic of the Congo, and that Uganda had confirmed a case in a patient from the DRC. WHO is supporting the DRC with surveillance, contact tracing, infection prevention, laboratory capacity, safe burials and community awareness.",
+      "source": "who-afro-drc-2026",
+      "note": "Case counts have grown far beyond the first report and are deliberately not stored here. For current figures use WHO Disease Outbreak News. The WHO vaccine guidance of 31 August 2026 (who-ervebo-bdbv-2026) describes the outbreak as having spread substantially with continued transmission and high mortality; use WHO situation reports for numbers."
+    },
+    {
+      "id": "treatment-ebola-virus",
+      "topic": "treatment",
+      "volatile": false,
+      "text": "For Ebola virus disease, WHO strongly recommends two monoclonal antibody treatments, mAb114 (ansuvimab) and REGN-EB3 (Inmazeb), given alongside supportive care.",
+      "source": "who-factsheet"
+    },
+    {
+      "id": "isolation-treatment-centre",
+      "topic": "prevention",
+      "volatile": false,
+      "text": "People with Ebola should be isolated in a designated treatment centre, for early care and to avoid spreading it at home. Close physical contact with Ebola patients should be avoided.",
+      "source": "who-factsheet"
+    },
+    {
+      "id": "community-involvement",
+      "topic": "prevention",
+      "volatile": false,
+      "text": "Communities control outbreaks best when they are well informed about the disease and involved in the response, with open discussion.",
+      "source": "who-factsheet"
+    },
+    {
+      "id": "survivors-respect",
+      "topic": "survivors",
+      "volatile": false,
+      "text": "Survivors, their partners and families should be shown respect, dignity and compassion. Recovered people are not a risk to others in everyday life once their blood has tested negative.",
+      "source": "who-factsheet",
+      "note": "First sentence is WHO's wording. The second restates WHO's advice not to isolate recovered patients with a negative blood test, and is the answer to stigma rumours."
+    },
+    {
+      "id": "bleeding-and-other-signs",
+      "topic": "symptoms",
+      "volatile": false,
+      "text": "Some patients develop internal and external bleeding, for example blood in vomit or stool, or bleeding from the nose or gums. It tends to appear later and is not the first sign.",
+      "source": "who-factsheet"
+    },
+    {
+      "id": "sudden-onset",
+      "topic": "symptoms",
+      "volatile": false,
+      "text": "Illness can begin suddenly. Health workers should look out for fever together with fatigue, muscle pain, headache and sore throat, followed by vomiting, diarrhoea and abdominal pain.",
+      "source": "who-factsheet"
+    },
+    {
+      "id": "ervebo-what-it-covers",
+      "topic": "vaccines",
+      "volatile": true,
+      "asOf": "2026-08-31",
+      "validUntil": "2027-02-28",
+      "source": "who-ervebo-bdbv-2026",
+      "text": "Ervebo is currently the only licensed Ebola vaccine. It is licensed to prevent Ebola virus disease, caused by Ebola virus (Orthoebolavirus zairense), in people aged one year and older."
+    },
+    {
+      "id": "ervebo-not-licensed-bundibugyo",
+      "topic": "vaccines",
+      "volatile": true,
+      "asOf": "2026-08-31",
+      "validUntil": "2027-02-28",
+      "source": "who-ervebo-bdbv-2026",
+      "text": "Ervebo is not licensed for use against Bundibugyo virus, so using it against Bundibugyo disease is off-label use."
+    },
+    {
+      "id": "ervebo-bdbv-efficacy-unknown",
+      "topic": "vaccines",
+      "volatile": true,
+      "asOf": "2026-08-31",
+      "validUntil": "2027-02-28",
+      "source": "who-ervebo-bdbv-2026",
+      "text": "Bundibugyo and Ebola virus cause clinically similar disease but are genetically distinct, and their surface proteins (the part the vaccine targets) share only about 60-65% of their amino acids. So it is not yet known whether Ervebo gives meaningful protection against Bundibugyo. No efficacy data in people exist yet. Animal studies suggest some protection against death but little or none against infection or illness."
+    },
+    {
+      "id": "ervebo-not-complete-protection",
+      "topic": "vaccines",
+      "volatile": true,
+      "asOf": "2026-08-31",
+      "validUntil": "2027-02-28",
+      "source": "who-ervebo-bdbv-2026",
+      "text": "Some people vaccinated with Ervebo have still caught Bundibugyo disease, so the vaccine does not give complete protection against it. WHO says these early reports cannot show how much protection, if any, it gives.",
+      "note": "Source: Table 2, Bunia hospital cohort (3 of 11 confirmed cases had been vaccinated). Small cohort with incomplete records. Do not quote numbers to the public."
+    },
+    {
+      "id": "bdbv-specific-vaccines",
+      "topic": "vaccines",
+      "volatile": true,
+      "asOf": "2026-08-31",
+      "validUntil": "2027-02-28",
+      "source": "who-ervebo-bdbv-2026",
+      "text": "Vaccines made specifically for Bundibugyo virus are still being developed and tested and are not yet available for use. A ring vaccination trial of Ervebo and Bundibugyo-specific candidates is planned in the Democratic Republic of the Congo."
+    },
+    {
+      "id": "vaccination-not-a-substitute",
+      "topic": "vaccines",
+      "volatile": true,
+      "asOf": "2026-08-31",
+      "validUntil": "2027-02-28",
+      "source": "who-ervebo-bdbv-2026",
+      "text": "Vaccination must not be presented as known protection against Bundibugyo, or as a substitute for the proven outbreak-control measures. Surveillance, rapid diagnosis, isolation and clinical care, infection prevention and control, contact tracing and safe and dignified burials must continue whether or not people have been vaccinated."
+    },
+    {
+      "id": "who-ervebo-recommendation-bdbv",
+      "topic": "vaccines",
+      "volatile": true,
+      "asOf": "2026-08-31",
+      "validUntil": "2027-02-28",
+      "source": "who-ervebo-bdbv-2026",
+      "text": "WHO's current advice is that the evidence is not yet enough for routine use of Ervebo against Bundibugyo, and that it should be used for Bundibugyo only within a research study, starting with health and frontline workers in affected areas. WHO continues to recommend Ervebo for health and frontline workers in areas at risk of Ebola virus (Zaire) outbreaks.",
+      "note": "Interim guidance. WHO says it will update the advice if the evidence changes."
+    }
+  ],
+  "gaps": [
+    "The WHO fact sheet is dated 24 April 2025, before the 2026 Bundibugyo epidemic. Its statement that there is no approved vaccine or treatment for Bundibugyo is consistent with WHO's 31 August 2026 vaccine guidance (Ervebo is not licensed for Bundibugyo). Treatment guidance for Bundibugyo in 2026 has not been read; re-check before answering treatment questions.",
+    "WHO EMRO page (https://www.emro.who.int/health-topics/ebola-virus) returned HTTP 502 twice and could not be read. Its content overlaps the WHO fact sheet.",
+    "The Bundibugyo disease outbreak news page named 'Ebola disease caused by Bundibugyo virus - Democratic Republic of the Congo' had no link; only the WHO AFRO news release of 15 May 2026 was read. Add the official Disease Outbreak News text if you want current figures.",
+    "Africa CDC's outbreak figures date from 2019, so only evergreen content and the 2014 Nigeria row were used from that page.",
+    "No Hausa, Yoruba, Igbo, Pidgin or French versions yet. These should be written or reviewed by native speakers, not machine-translated unchecked.",
+    "No myth-versus-fact entries on specific rumours (for example salt water). The pages read do not address them, and we will not invent medical claims. Ask NCDC for their rumour-response guidance.",
+    "The WHO vaccine guidance (31 August 2026) covers vaccine use only. It says nothing about whether Bundibugyo disease has reached Nigeria; the only Nigeria status entry is nigeria-status-2026-10, as of 6 October 2026.",
+    "The vaccine guidance expires on 28 February 2027 unless WHO updates it. Entries from it carry validUntil so the system can refuse to use them after that date."
+  ]
+}

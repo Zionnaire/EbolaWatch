@@ -1,0 +1,122 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "request_id": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["completed", "partial", "failed"]
+    },
+    "model": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "taxonomy_version": {
+          "type": ["string", "null"]
+        },
+        "base_model": {
+          "type": ["string", "null"]
+        },
+        "trained_at": {
+          "type": ["string", "null"]
+        }
+      },
+      "required": ["name", "version", "taxonomy_version", "base_model", "trained_at"],
+      "additionalProperties": false
+    },
+    "results": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "item_id": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string",
+                "const": "completed"
+              },
+              "label": {
+                "type": "string",
+                "enum": ["misinformation", "factual", "irrelevant"]
+              },
+              "probabilities": {
+                "type": "object",
+                "properties": {
+                  "misinformation": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  "factual": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  "irrelevant": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  }
+                },
+                "required": ["misinformation", "factual", "irrelevant"],
+                "additionalProperties": false
+              },
+              "entropy": {
+                "type": "number",
+                "minimum": 0
+              },
+              "language": {
+                "type": ["string", "null"]
+              },
+              "latency_ms": {
+                "type": "number",
+                "minimum": 0
+              }
+            },
+            "required": ["item_id", "status", "label", "probabilities", "entropy", "language", "latency_ms"],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "item_id": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string",
+                "const": "failed"
+              },
+              "error": {
+                "type": "object",
+                "properties": {
+                  "code": {
+                    "type": "string"
+                  },
+                  "message": {
+                    "type": "string"
+                  }
+                },
+                "required": ["code", "message"],
+                "additionalProperties": false
+              }
+            },
+            "required": ["item_id", "status", "error"],
+            "additionalProperties": false
+          }
+        ]
+      }
+    }
+  },
+  "required": ["request_id", "status", "model", "results"],
+  "additionalProperties": false
+}

@@ -1,0 +1,55 @@
+import { z } from 'zod';
+import { ContractSchema, SeverityLevelSchema } from './classification.js';
+
+const probability = z.number().min(0).max(1);
+
+export const ModeThresholdsSchema = z.object({ dormant: probability, surge: probability });
+export type ModeThresholds = z.infer<typeof ModeThresholdsSchema>;
+
+export const KeywordRuleSchema = z.object({
+  id: z.string().min(1),
+  /** Regular expression source, matched against the scrubbed text. */
+  pattern: z.string().min(1),
+  flags: z.string().default('iu'),
+  severity: SeverityLevelSchema,
+  description: z.string().optional(),
+});
+export type KeywordRule = z.infer<typeof KeywordRuleSchema>;
+
+/**
+ * Decision settings are data, keyed by taxonomy version (3-class uses its contract name as the key).
+ * Both the multilabel and the 3-class parameters live here so a version carries everything the engine needs.
+ */
+export const RulesConfigSchema = z
+  .object({
+    taxonomyVersion: z.string().min(1),
+    contract: ContractSchema,
+    defaultThresholds: ModeThresholdsSchema,
+    categories: z.record(
+      z.string(),
+      z.object({ floor: SeverityLevelSchema, thresholds: ModeThresholdsSchema.optional() }),
+    ),
+    keywordRules: z.array(KeywordRuleSchema),
+    confidenceBands: z.object({ urgent: probability, standard: probability }),
+    threeClassSeverity: z.object({ urgent: SeverityLevelSchema, standard: SeverityLevelSchema }),
+    /** multilabel: a misinformation decision is `urgent` at or above this final severity. */
+    urgentSeverityMin: SeverityLevelSchema,
+    updatedAt: z.string(),
+  })
+  .refine((r) => r.confidenceBands.urgent >= r.confidenceBands.standard, {
+    message: 'urgent band must be >= standard band',
+    path: ['confidenceBands'],
+  })
+  .refine(
+    (r) =>
+      r.keywordRules.every((k) => {
+        try {
+          new RegExp(k.pattern, k.flags);
+          return true;
+        } catch {
+          return false;
+        }
+      }),
+    { message: 'every keyword rule must be a valid regular expression', path: ['keywordRules'] },
+  );
+export type RulesConfig = z.infer<typeof RulesConfigSchema>;

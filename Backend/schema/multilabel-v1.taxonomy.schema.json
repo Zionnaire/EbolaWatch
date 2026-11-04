@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "taxonomy_version": {
+      "type": "string"
+    },
+    "categories": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "display_name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "required": ["id", "display_name", "description"],
+        "additionalProperties": false
+      }
+    },
+    "stances": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "display_name": {
+            "type": "string"
+          }
+        },
+        "required": ["id", "display_name"],
+        "additionalProperties": false
+      }
+    },
+    "severity_levels": {
+      "type": "array",
+      "items": {
+        "type": "number",
+        "enum": [0, 1, 2, 3, 4]
+      }
+    },
+    "languages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "display_name": {
+            "type": "string"
+          }
+        },
+        "required": ["id", "display_name"],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": ["taxonomy_version", "categories", "stances", "severity_levels", "languages"],
+  "additionalProperties": false
+}

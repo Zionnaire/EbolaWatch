@@ -1,0 +1,135 @@
+import { z } from 'zod';
+import { ClassificationSchema, SeverityLevelSchema, StanceSchema } from './classification.js';
+
+export const PipelineStatusSchema = z.enum([
+  'pending',
+  'classifying',
+  'classified',
+  'needs_review',
+  'classification_error',
+]);
+export type PipelineStatus = z.infer<typeof PipelineStatusSchema>;
+
+export const ReviewStatusSchema = z.enum(['unreviewed', 'confirmed', 'rejected', 'corrected']);
+export type ReviewStatus = z.infer<typeof ReviewStatusSchema>;
+
+export const QueueSchema = z.enum(['review', 'information_gap', 'none']);
+export type Queue = z.infer<typeof QueueSchema>;
+
+export const DecisionDtoSchema = z.object({
+  isMisinformation: z.boolean(),
+  finalSeverity: SeverityLevelSchema.nullable(),
+  reasons: z.array(z.string()),
+  priorityScore: z.number(),
+  urgent: z.boolean(),
+  queue: QueueSchema,
+  /** An unknown category label was seen on this classification. */
+  needsReview: z.boolean(),
+  /** Thresholds, floors, keyword rules, bands and the mode actually used. */
+  rulesSnapshot: z.record(z.string(), z.unknown()),
+  createdAt: z.string(),
+});
+export type DecisionDto = z.infer<typeof DecisionDtoSchema>;
+
+export const EngagementSchema = z
+  .object({
+    likes: z.number().nullish(),
+    reposts: z.number().nullish(),
+    replies: z.number().nullish(),
+    views: z.number().nullish(),
+  })
+  .nullable();
+
+export const PostDtoSchema = z.object({
+  id: z.string(),
+  platform: z.string(),
+  /** PII-scrubbed. Raw text is never persisted. */
+  text: z.string(),
+  languageHint: z.string().nullable(),
+  state: z.string().nullable(),
+  lga: z.string().nullable(),
+  postedAt: z.string(),
+  ingestedAt: z.string(),
+  engagement: EngagementSchema,
+  pipelineStatus: PipelineStatusSchema,
+  reviewStatus: ReviewStatusSchema,
+  /** Computed: unreviewed in a queue for longer than OVERDUE_HOURS. */
+  overdue: z.boolean(),
+  isMock: z.boolean(),
+  errorDetail: z.string().nullable(),
+  classification: ClassificationSchema.nullable(),
+  decision: DecisionDtoSchema.nullable(),
+});
+export type PostDto = z.infer<typeof PostDtoSchema>;
+
+export const PostListDtoSchema = z.object({
+  items: z.array(PostDtoSchema),
+  page: z.number().int(),
+  pageSize: z.number().int(),
+  total: z.number().int(),
+});
+export type PostListDto = z.infer<typeof PostListDtoSchema>;
+
+export const ReviewDecisionSchema = z.enum(['confirmed', 'rejected', 'corrected']);
+
+export const ReviewRequestSchema = z
+  .object({
+    decision: ReviewDecisionSchema,
+    /** In the model's own label space: category ids (multilabel) or the 3-class label. */
+    correction: z
+      .object({ labels: z.array(z.string().min(1)).min(1), stance: StanceSchema.optional() })
+      .optional(),
+    note: z.string().max(1000).optional(),
+  })
+  .refine((r) => r.decision !== 'corrected' || r.correction !== undefined, {
+    message: 'a corrected review must include a correction',
+    path: ['correction'],
+  });
+export type ReviewRequest = z.infer<typeof ReviewRequestSchema>;
+
+export const ReviewDtoSchema = z.object({
+  id: z.string(),
+  postId: z.string(),
+  classificationId: z.string(),
+  reviewer: z.string(),
+  decision: ReviewDecisionSchema,
+  correction: z.object({ labels: z.array(z.string()), stance: StanceSchema.optional() }).nullable(),
+  taxonomyVersion: z.string().nullable(),
+  note: z.string().nullable(),
+  createdAt: z.string(),
+});
+export type ReviewDto = z.infer<typeof ReviewDtoSchema>;
+
+export const PostHistoryEntrySchema = z.object({
+  classificationId: z.string(),
+  createdAt: z.string(),
+  isMock: z.boolean(),
+  classification: ClassificationSchema,
+  decision: DecisionDtoSchema.nullable(),
+});
+
+export const PostDetailDtoSchema = z.object({
+  post: PostDtoSchema,
+  /** Every classification of this post (newest first), across model versions. */
+  history: z.array(PostHistoryEntrySchema),
+  reviews: z.array(ReviewDtoSchema),
+});
+export type PostDetailDto = z.infer<typeof PostDetailDtoSchema>;
+
+export const PostListQuerySchema = z.object({
+  queue: QueueSchema.optional(),
+  severity: z.coerce.number().int().min(0).max(4).optional(),
+  category: z.string().min(1).optional(),
+  language: z.string().min(1).optional(),
+  state: z.string().min(1).optional(),
+  platform: z.string().min(1).optional(),
+  pipelineStatus: PipelineStatusSchema.optional(),
+  reviewStatus: ReviewStatusSchema.optional(),
+  overdue: z
+    .enum(['true', 'false'])
+    .transform((v) => v === 'true')
+    .optional(),
+  page: z.coerce.number().int().min(1).default(1),
+  pageSize: z.coerce.number().int().min(1).max(100).default(25),
+});
+export type PostListQuery = z.infer<typeof PostListQuerySchema>;

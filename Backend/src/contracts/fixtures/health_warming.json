@@ -1,0 +1,6 @@
+{
+  "status": "warming",
+  "model_version": "1.0.0",
+  "taxonomy_version": "ebola-tax-1.0",
+  "retry_after_seconds": 20
+}

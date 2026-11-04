@@ -1,0 +1,309 @@
+{
+  "request_id": "00000000-0000-4000-8000-000000000002",
+  "status": "completed",
+  "model": {
+    "name": "ebola-clf",
+    "version": "1.0.0",
+    "taxonomy_version": "ebola-tax-1.0",
+    "base_model": "afro-xlmr-base",
+    "trained_at": "2026-09-01T00:00:00Z"
+  },
+  "results": [
+    {
+      "item_id": "syn_endorse",
+      "status": "completed",
+      "language": {
+        "primary": "pcm",
+        "confidence": 0.9,
+        "code_switched": true
+      },
+      "relevance": {
+        "is_ebola_related": true,
+        "confidence": 0.96
+      },
+      "stance": {
+        "label": "endorses",
+        "confidence": 0.82
+      },
+      "categories": [
+        {
+          "label": "fake_cure_prevention",
+          "score": 0.88
+        },
+        {
+          "label": "transmission_misinfo",
+          "score": 0.11
+        },
+        {
+          "label": "outbreak_denial",
+          "score": 0.073
+        },
+        {
+          "label": "origin_conspiracy",
+          "score": 0.055
+        },
+        {
+          "label": "response_distrust",
+          "score": 0.044
+        },
+        {
+          "label": "vaccine_trial_distrust",
+          "score": 0.037
+        },
+        {
+          "label": "burial_resistance",
+          "score": 0.031
+        },
+        {
+          "label": "stigma_discrimination",
+          "score": 0.028
+        },
+        {
+          "label": "false_case_report",
+          "score": 0.024
+        },
+        {
+          "label": "fake_official_notice",
+          "score": 0.022
+        },
+        {
+          "label": "incitement_against_response",
+          "score": 0.02
+        },
+        {
+          "label": "other_ebola_misinfo",
+          "score": 0.018
+        }
+      ],
+      "severity": {
+        "level": 4,
+        "confidence": 0.74,
+        "distribution": [0.016, 0.039, 0.097, 0.242, 0.606]
+      },
+      "truncated": false,
+      "latency_ms": 140
+    },
+    {
+      "item_id": "syn_refute",
+      "status": "completed",
+      "language": {
+        "primary": "en",
+        "confidence": 0.9,
+        "code_switched": false
+      },
+      "relevance": {
+        "is_ebola_related": true,
+        "confidence": 0.96
+      },
+      "stance": {
+        "label": "refutes",
+        "confidence": 0.9
+      },
+      "categories": [
+        {
+          "label": "fake_cure_prevention",
+          "score": 0.12
+        },
+        {
+          "label": "transmission_misinfo",
+          "score": 0.11
+        },
+        {
+          "label": "outbreak_denial",
+          "score": 0.073
+        },
+        {
+          "label": "origin_conspiracy",
+          "score": 0.055
+        },
+        {
+          "label": "response_distrust",
+          "score": 0.044
+        },
+        {
+          "label": "vaccine_trial_distrust",
+          "score": 0.037
+        },
+        {
+          "label": "burial_resistance",
+          "score": 0.031
+        },
+        {
+          "label": "stigma_discrimination",
+          "score": 0.028
+        },
+        {
+          "label": "false_case_report",
+          "score": 0.024
+        },
+        {
+          "label": "fake_official_notice",
+          "score": 0.022
+        },
+        {
+          "label": "incitement_against_response",
+          "score": 0.02
+        },
+        {
+          "label": "other_ebola_misinfo",
+          "score": 0.018
+        }
+      ],
+      "severity": {
+        "level": 0,
+        "confidence": 0.8,
+        "distribution": [0.606, 0.242, 0.097, 0.039, 0.016]
+      },
+      "truncated": false,
+      "latency_ms": 140
+    },
+    {
+      "item_id": "syn_question",
+      "status": "completed",
+      "language": {
+        "primary": "yo",
+        "confidence": 0.9,
+        "code_switched": false
+      },
+      "relevance": {
+        "is_ebola_related": true,
+        "confidence": 0.96
+      },
+      "stance": {
+        "label": "questions",
+        "confidence": 0.77
+      },
+      "categories": [
+        {
+          "label": "false_case_report",
+          "score": 0.31
+        },
+        {
+          "label": "fake_cure_prevention",
+          "score": 0.11
+        },
+        {
+          "label": "transmission_misinfo",
+          "score": 0.073
+        },
+        {
+          "label": "outbreak_denial",
+          "score": 0.055
+        },
+        {
+          "label": "origin_conspiracy",
+          "score": 0.044
+        },
+        {
+          "label": "response_distrust",
+          "score": 0.037
+        },
+        {
+          "label": "vaccine_trial_distrust",
+          "score": 0.031
+        },
+        {
+          "label": "burial_resistance",
+          "score": 0.028
+        },
+        {
+          "label": "stigma_discrimination",
+          "score": 0.024
+        },
+        {
+          "label": "fake_official_notice",
+          "score": 0.022
+        },
+        {
+          "label": "incitement_against_response",
+          "score": 0.02
+        },
+        {
+          "label": "other_ebola_misinfo",
+          "score": 0.018
+        }
+      ],
+      "severity": {
+        "level": 1,
+        "confidence": 0.74,
+        "distribution": [0.198, 0.494, 0.198, 0.079, 0.032]
+      },
+      "truncated": false,
+      "latency_ms": 140
+    },
+    {
+      "item_id": "syn_report",
+      "status": "completed",
+      "language": {
+        "primary": "ha",
+        "confidence": 0.9,
+        "code_switched": false
+      },
+      "relevance": {
+        "is_ebola_related": true,
+        "confidence": 0.96
+      },
+      "stance": {
+        "label": "neutral_report",
+        "confidence": 0.85
+      },
+      "categories": [
+        {
+          "label": "fake_cure_prevention",
+          "score": 0.11
+        },
+        {
+          "label": "transmission_misinfo",
+          "score": 0.073
+        },
+        {
+          "label": "outbreak_denial",
+          "score": 0.055
+        },
+        {
+          "label": "other_ebola_misinfo",
+          "score": 0.05
+        },
+        {
+          "label": "origin_conspiracy",
+          "score": 0.044
+        },
+        {
+          "label": "response_distrust",
+          "score": 0.037
+        },
+        {
+          "label": "vaccine_trial_distrust",
+          "score": 0.031
+        },
+        {
+          "label": "burial_resistance",
+          "score": 0.028
+        },
+        {
+          "label": "stigma_discrimination",
+          "score": 0.024
+        },
+        {
+          "label": "false_case_report",
+          "score": 0.022
+        },
+        {
+          "label": "fake_official_notice",
+          "score": 0.02
+        },
+        {
+          "label": "incitement_against_response",
+          "score": 0.018
+        }
+      ],
+      "severity": {
+        "level": 0,
+        "confidence": 0.74,
+        "distribution": [0.606, 0.242, 0.097, 0.039, 0.016]
+      },
+      "truncated": false,
+      "latency_ms": 140
+    }
+  ]
+}

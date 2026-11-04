@@ -1,0 +1,211 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "request_id": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["completed", "partial", "failed"]
+    },
+    "model": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "taxonomy_version": {
+          "type": "string"
+        },
+        "base_model": {
+          "type": ["string", "null"]
+        },
+        "trained_at": {
+          "type": ["string", "null"]
+        }
+      },
+      "required": ["name", "version", "taxonomy_version", "base_model", "trained_at"],
+      "additionalProperties": false
+    },
+    "results": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "item_id": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string",
+                "const": "completed"
+              },
+              "language": {
+                "type": "object",
+                "properties": {
+                  "primary": {
+                    "type": "string",
+                    "enum": ["en", "pcm", "ha", "yo", "ig", "fr", "und"]
+                  },
+                  "confidence": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  "code_switched": {
+                    "type": "boolean"
+                  }
+                },
+                "required": ["primary", "confidence", "code_switched"],
+                "additionalProperties": false
+              },
+              "relevance": {
+                "type": "object",
+                "properties": {
+                  "is_ebola_related": {
+                    "type": "boolean"
+                  },
+                  "confidence": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  }
+                },
+                "required": ["is_ebola_related", "confidence"],
+                "additionalProperties": false
+              },
+              "stance": {
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "label": {
+                        "type": "string",
+                        "enum": ["endorses", "refutes", "questions", "neutral_report"]
+                      },
+                      "confidence": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1
+                      }
+                    },
+                    "required": ["label", "confidence"],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "categories": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "type": "string"
+                    },
+                    "score": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    }
+                  },
+                  "required": ["label", "score"],
+                  "additionalProperties": false
+                }
+              },
+              "severity": {
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "level": {
+                        "type": "number",
+                        "enum": [0, 1, 2, 3, 4]
+                      },
+                      "confidence": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1
+                      },
+                      "distribution": {
+                        "minItems": 5,
+                        "maxItems": 5,
+                        "type": "array",
+                        "items": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 1
+                        }
+                      }
+                    },
+                    "required": ["level", "confidence", "distribution"],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "truncated": {
+                "type": "boolean"
+              },
+              "latency_ms": {
+                "type": "number",
+                "minimum": 0
+              }
+            },
+            "required": [
+              "item_id",
+              "status",
+              "language",
+              "relevance",
+              "stance",
+              "categories",
+              "severity",
+              "truncated",
+              "latency_ms"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "item_id": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string",
+                "const": "failed"
+              },
+              "error": {
+                "type": "object",
+                "properties": {
+                  "code": {
+                    "type": "string",
+                    "enum": ["empty_text", "text_too_long", "unsupported_input", "internal"]
+                  },
+                  "message": {
+                    "type": "string"
+                  }
+                },
+                "required": ["code", "message"],
+                "additionalProperties": false
+              }
+            },
+            "required": ["item_id", "status", "error"],
+            "additionalProperties": false
+          }
+        ]
+      }
+    }
+  },
+  "required": ["request_id", "status", "model", "results"],
+  "additionalProperties": false
+}

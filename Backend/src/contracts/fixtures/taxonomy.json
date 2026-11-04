@@ -1,0 +1,114 @@
+{
+  "taxonomy_version": "ebola-tax-1.0",
+  "categories": [
+    {
+      "id": "fake_cure_prevention",
+      "display_name": "Fake cure or prevention",
+      "description": "Claims of home remedies, salt-water bathing or other unproven cures or preventives."
+    },
+    {
+      "id": "transmission_misinfo",
+      "display_name": "Transmission misinformation",
+      "description": "False claims about how Ebola spreads."
+    },
+    {
+      "id": "outbreak_denial",
+      "display_name": "Outbreak denial",
+      "description": "Claims that the outbreak or the disease is not real."
+    },
+    {
+      "id": "origin_conspiracy",
+      "display_name": "Origin conspiracy",
+      "description": "Conspiracy theories about the origin of the virus."
+    },
+    {
+      "id": "response_distrust",
+      "display_name": "Response distrust",
+      "description": "Undermining trust in health authorities or response teams."
+    },
+    {
+      "id": "vaccine_trial_distrust",
+      "display_name": "Vaccine and trial distrust",
+      "description": "False claims about vaccines or clinical trials."
+    },
+    {
+      "id": "burial_resistance",
+      "display_name": "Burial resistance",
+      "description": "Encouraging resistance to safe and dignified burials."
+    },
+    {
+      "id": "stigma_discrimination",
+      "display_name": "Stigma and discrimination",
+      "description": "Stigmatising survivors, health workers or communities."
+    },
+    {
+      "id": "false_case_report",
+      "display_name": "False case report",
+      "description": "Unverified claims of cases or deaths in a location."
+    },
+    {
+      "id": "fake_official_notice",
+      "display_name": "Fake official notice",
+      "description": "Fabricated or altered notices attributed to officials."
+    },
+    {
+      "id": "incitement_against_response",
+      "display_name": "Incitement against response",
+      "description": "Calls to obstruct or attack response teams or facilities."
+    },
+    {
+      "id": "other_ebola_misinfo",
+      "display_name": "Other Ebola misinformation",
+      "description": "Ebola-related misinformation not covered by another category."
+    }
+  ],
+  "stances": [
+    {
+      "id": "endorses",
+      "display_name": "Endorses"
+    },
+    {
+      "id": "refutes",
+      "display_name": "Refutes"
+    },
+    {
+      "id": "questions",
+      "display_name": "Questions"
+    },
+    {
+      "id": "neutral_report",
+      "display_name": "Neutral report"
+    }
+  ],
+  "severity_levels": [0, 1, 2, 3, 4],
+  "languages": [
+    {
+      "id": "en",
+      "display_name": "English"
+    },
+    {
+      "id": "pcm",
+      "display_name": "Nigerian Pidgin"
+    },
+    {
+      "id": "ha",
+      "display_name": "Hausa"
+    },
+    {
+      "id": "yo",
+      "display_name": "Yoruba"
+    },
+    {
+      "id": "ig",
+      "display_name": "Igbo"
+    },
+    {
+      "id": "fr",
+      "display_name": "French"
+    },
+    {
+      "id": "und",
+      "display_name": "Undetermined"
+    }
+  ]
+}

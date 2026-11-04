@@ -1,0 +1,15 @@
+{
+  "name": "ebolawatch",
+  "private": true,
+  "description": "Convenience scripts only. Backend/ and Frontend/ are independent projects (no workspace).",
+  "engines": {
+    "node": ">=20.19"
+  },
+  "scripts": {
+    "dev": "concurrently -n model,api,web -c magenta,cyan,green \"pnpm --dir Backend mock-model\" \"pnpm --dir Backend dev\" \"pnpm --dir Frontend dev\"",
+    "dev:api": "concurrently -n model,api -c magenta,cyan \"pnpm --dir Backend mock-model\" \"pnpm --dir Backend dev\""
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.6"
+  }
+}

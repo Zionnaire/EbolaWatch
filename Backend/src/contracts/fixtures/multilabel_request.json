@@ -1,0 +1,13 @@
+{
+  "request_id": "00000000-0000-4000-8000-0000000000aa",
+  "taxonomy_version": "ebola-tax-1.0",
+  "items": [
+    {
+      "item_id": "syn_endorse",
+      "text": "Synthetic scrubbed text",
+      "platform": "bluesky",
+      "language_hint": null,
+      "context_text": null
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "request_id": "00000000-0000-4000-8000-000000000003",
+  "status": "partial",
+  "model": {
+    "name": "ebola-clf",
+    "version": "1.0.0",
+    "taxonomy_version": "ebola-tax-1.0",
+    "base_model": "afro-xlmr-base",
+    "trained_at": "2026-09-01T00:00:00Z"
+  },
+  "results": [
+    {
+      "item_id": "syn_ok",
+      "status": "completed",
+      "language": {
+        "primary": "ig",
+        "confidence": 0.9,
+        "code_switched": false
+      },
+      "relevance": {
+        "is_ebola_related": true,
+        "confidence": 0.96
+      },
+      "stance": {
+        "label": "endorses",
+        "confidence": 0.82
+      },
+      "categories": [
+        {
+          "label": "transmission_misinfo",
+          "score": 0.7
+        },
+        {
+          "label": "fake_cure_prevention",
+          "score": 0.11
+        },
+        {
+          "label": "outbreak_denial",
+          "score": 0.073
+        },
+        {
+          "label": "origin_conspiracy",
+          "score": 0.055
+        },
+        {
+          "label": "response_distrust",
+          "score": 0.044
+        },
+        {
+          "label": "vaccine_trial_distrust",
+          "score": 0.037
+        },
+        {
+          "label": "burial_resistance",
+          "score": 0.031
+        },
+        {
+          "label": "stigma_discrimination",
+          "score": 0.028
+        },
+        {
+          "label": "false_case_report",
+          "score": 0.024
+        },
+        {
+          "label": "fake_official_notice",
+          "score": 0.022
+        },
+        {
+          "label": "incitement_against_response",
+          "score": 0.02
+        },
+        {
+          "label": "other_ebola_misinfo",
+          "score": 0.018
+        }
+      ],
+      "severity": {
+        "level": 2,
+        "confidence": 0.74,
+        "distribution": [0.075, 0.189, 0.472, 0.189, 0.075]
+      },
+      "truncated": false,
+      "latency_ms": 140
+    },
+    {
+      "item_id": "syn_empty",
+      "status": "failed",
+      "error": {
+        "code": "empty_text",
+        "message": "Text was empty after normalisation"
+      }
+    }
+  ]
+}
